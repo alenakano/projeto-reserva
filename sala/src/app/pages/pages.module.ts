@@ -5,9 +5,13 @@ import { PagesLoginComponent } from './pages-login.component';
 import { PagesReservaComponent } from './pages-reserva.component';
 import { PagesSituacaoComponent } from './pages-situacao.component';
 
+import { BaseModule } from "../base/base.module"
 
 @NgModule( 
     { 
+    imports: [
+        BaseModule
+    ],
     declarations: [
         PagesHomeComponent,
         PagesLoginComponent,
