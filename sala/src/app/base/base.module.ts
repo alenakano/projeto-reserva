@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { BaseInputComponent } from './base-input.component';
 import { BaseListaHorariosComponent } from './base-lista-horarios.component';
 import { BaseListaHorariosService } from './base-lista-horarios.service';
-import { BaseInputComponent } from './base-input.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    BaseListaHorariosComponent,
     BaseInputComponent,    
+    BaseListaHorariosComponent,
   ],
   exports: [
     BaseInputComponent,
-    BaseListaHorariosComponent
+    BaseListaHorariosComponent,
   ],
   providers: [
     BaseListaHorariosService

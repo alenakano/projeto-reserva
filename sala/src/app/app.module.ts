@@ -4,10 +4,9 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BaseModule } from './base/base.module';
 import { routing } from './app.routes';
 
-
+import { BaseModule } from './base/base.module';
 import { PagesModule } from './pages/pages.module';
 
 @NgModule({
