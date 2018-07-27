@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  private expandido: boolean = false;
+  private classe: string = 'topnav';
+
+  private onClick(): void {
+    if (!this.expandido) {
+      this.expandido = true;
+      this.classe = 'topnav responsive'
+    } else {
+      this.expandido = false;
+      this.classe = 'topnav'
+    }
+  }
+
 }

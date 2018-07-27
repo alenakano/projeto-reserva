@@ -1,17 +1,11 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav [class]="classe">
 
-<!-- Links -->
-    <ul class="navbar-nav">
-    <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" [routerLink]="['/']">Home</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/situacao']">Listar reservas</a>
-    </li>
-    <li class="nav-item"[routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/reserva']">Reservar</a>
-    </li>
-    </ul>
-
+    <!-- Links -->
+    <a href="javascript:void(0);" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a href="javascript:void(0);" [routerLink]="['/situacao']" [routerLinkActive]="['active']">Listar reservas</a>
+    <a href="javascript:void(0);" [routerLink]="['/reserva']" [routerLinkActive]="['active']">Reservar</a>
+    <a href="javascript:void(0);" class="icon" (click)="onClick()">
+        <i class="fa fa-bars"></i>
+    </a>
 </nav> 
 <router-outlet></router-outlet>
