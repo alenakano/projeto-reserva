@@ -16,7 +16,7 @@ export class BaseListaHorariosService {
 
     http: Http;
     headers: Headers;
-    url: string = 'horarios';
+    url: string = 'http://localhost:3000/horarios';
 
     constructor(http: Http) {
         this.http = http;
