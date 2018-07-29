@@ -1,2 +1,18 @@
-<h1>Teste da tela login</h1>
-<base-input></base-input>
+<div class="jumbotron shadow jumbotron-fluid bg-info">
+    <div class="container">
+        <h1 id="titulo" class="text-center">Login</h1>
+    </div>
+</div>
+
+<div class="container col-sm-3">
+    <div class="form-group">
+        <label for="email">E-mail:</label>
+        <base-input id= "email" inputType="email"></base-input>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Senha:</label>
+        <base-input inputType="password" id="pwd"></base-input>
+    </div>
+    <button class="btn btn-default" (click)="onClick()">Entrar</button>
+</div>
+

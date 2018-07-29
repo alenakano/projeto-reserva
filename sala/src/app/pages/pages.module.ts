@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
+import { PagesCadastroComponent } from './pages-cadastro.component';
 import { PagesHomeComponent } from './pages-home.component';
 import { PagesLoginComponent } from './pages-login.component';
-import { PagesReservaComponent } from './pages-reserva.component';
+import { PagesManipulacaoComponent } from './pages-manipulacao.component';
 import { PagesSituacaoComponent } from './pages-situacao.component';
 
 import { BaseModule } from "../base/base.module"
@@ -10,18 +12,21 @@ import { BaseModule } from "../base/base.module"
 @NgModule( 
     { 
     imports: [
-        BaseModule
+        BaseModule,
+        CommonModule
     ],
     declarations: [
+        PagesCadastroComponent,
         PagesHomeComponent,
         PagesLoginComponent,
-        PagesReservaComponent,
+        PagesManipulacaoComponent,
         PagesSituacaoComponent,
     ],
     exports: [
+        PagesCadastroComponent,
         PagesHomeComponent,
         PagesLoginComponent,
-        PagesReservaComponent,
+        PagesManipulacaoComponent,        
         PagesSituacaoComponent,
     ]
 })
