@@ -1,6 +1,9 @@
 import { 
     Component,
-    OnInit 
+    EventEmitter,
+    Input,
+    OnInit, 
+    Output
 } from '@angular/core';
 
 import { BaseListaHorariosService } from './base-lista-horarios.service';
@@ -10,13 +13,18 @@ import { error } from '@angular/compiler/src/util';
 @Component(
     {
         selector: 'lista-horarios',
-        templateUrl: './base-lista-horarios.component.html'
+        templateUrl: './base-lista-horarios.component.html',
+        styleUrls: [ './base-lista-horarios.component.css' ]
     }
 ) 
 
 export class BaseListaHorariosComponent implements OnInit {
     
     private horarios: Horario[];
+
+    @Input() admin: boolean = false;
+
+    @Output() loaded: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(
         private service: BaseListaHorariosService
@@ -26,8 +34,8 @@ export class BaseListaHorariosComponent implements OnInit {
         this.service.buscaHorarios()
             .subscribe(
                 response => {
-                    this.horarios = response
-                    console.log(response)
+                    this.horarios = response;
+                    this.loaded.emit();
                 },
                 error => null,
             )

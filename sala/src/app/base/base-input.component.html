@@ -1,1 +1,1 @@
-<input [type]="inputType" class="form-control">
+<input #myInput [type]="inputType" class="form-control" (input)="onInput(myInput.value)">

@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { BaseInputComponent } from './base-input.component';
 import { BaseListaHorariosComponent } from './base-lista-horarios.component';
-import { BaseListaHorariosService } from './base-lista-horarios.service';
+import { BaseLoadingComponent } from './base-loading.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     BaseInputComponent,    
     BaseListaHorariosComponent,
+    BaseLoadingComponent,
   ],
   exports: [
     BaseInputComponent,
     BaseListaHorariosComponent,
+    BaseLoadingComponent,
   ],
   providers: [
-    BaseListaHorariosService
   ],
 })
 export class BaseModule { }

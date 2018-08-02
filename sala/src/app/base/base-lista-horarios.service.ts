@@ -24,7 +24,7 @@ export class BaseListaHorariosService {
         this.headers.append('Content-Type', 'application/json');
     }
 
-    buscaHorarios(): Observable<Horario[]> {
+    public buscaHorarios(): Observable<Horario[]> {
         return this.http
             .get(this.url)
             .pipe(map(res => res.json())); 

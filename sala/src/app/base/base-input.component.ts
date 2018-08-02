@@ -1,6 +1,10 @@
 import { 
     Component,
-    Input
+    ElementRef,
+    EventEmitter,
+    Input,
+    Output,
+    ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -8,6 +12,16 @@ import {
     templateUrl: './base-input.component.html'
 })
 export class BaseInputComponent{
+    
     @Input() inputType: string = "text";
+
+    @Output() listenInput: EventEmitter<string> = new EventEmitter<string>();
+
+    constructor(){
+    }
+
+    public onInput(valor): void {
+        this.listenInput.emit(valor);
+    }
 
 }
