@@ -4,15 +4,17 @@
     </div>
 </div>
 
+<div class="container col-sm-4 alert alert-danger text-center" *ngIf="erro">{{mensagem}}</div>
+
 <div class="container col-sm-3">
     <div class="form-group">
-        <label for="email">E-mail:</label>
-        <base-input id= "email" inputType="email"></base-input>
+        <label for="User">Usuário:</label>
+        <base-input id= "user" (listenInput)="onUserInput($event)"></base-input>
     </div>
     <div class="form-group">
         <label for="pwd">Senha:</label>
-        <base-input inputType="password" id="pwd"></base-input>
+        <base-input inputType="password" id="pwd" (listenInput)="onPasswordInput($event)"></base-input>
     </div>
-    <button class="btn btn-default" (click)="onClick()">Entrar</button>
+    <button class="btn btn-default" (click)="onClick()" [disabled]="isFilled()">Entrar</button>
 </div>
 

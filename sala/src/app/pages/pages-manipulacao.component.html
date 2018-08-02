@@ -1,4 +1,4 @@
 <div [ngSwitch]="passo">
-    <pages-login *ngSwitchCase="'login'" (validacao)="onValidacao($event)"></pages-login>
+    <pages-login *ngSwitchCase="'login'" (validacao)="onValidacao()"></pages-login>
     <pages-cadastro *ngSwitchCase="'reserva'"></pages-cadastro>
 </div>

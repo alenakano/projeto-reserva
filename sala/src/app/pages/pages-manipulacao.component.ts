@@ -13,9 +13,6 @@ export class PagesManipulacaoComponent {
     @Input() passo: string = 'login';
 
     onValidacao(validar): void {
-        console.log("validar")
-        if(validar == true) {
-            this.passo = 'reserva';
-        }
+        this.passo = 'reserva';
     }
 }
