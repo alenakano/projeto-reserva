@@ -21,9 +21,12 @@ import { error } from '@angular/compiler/src/util';
 export class BaseListaHorariosComponent implements OnInit {
     
     private horarios: Horario[];
+    private confirma: boolean = false;
 
     @Input() admin: boolean = false;
 
+    @Output() editar: EventEmitter<void> = new EventEmitter<void>();
+    @Output() excluir: EventEmitter<void> = new EventEmitter<void>();
     @Output() loaded: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(
@@ -40,4 +43,21 @@ export class BaseListaHorariosComponent implements OnInit {
                 error => null,
             )
     };
+
+    public onEditarClick(): void {
+        this.editar.emit();
+    }
+
+    public onExcluirClick(): void {
+        this.confirma = true;
+        this.excluir.emit();
+    }
+
+    public onNaoClick(): void {
+        this.confirma = false;
+    }
+
+    public onSimClick(): void {
+        this.confirma = false;
+    }
 }
