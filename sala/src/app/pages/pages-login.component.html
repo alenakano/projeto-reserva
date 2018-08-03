@@ -17,4 +17,4 @@
     </div>
     <button class="btn btn-default" (click)="onClick()" [disabled]="isFilled()">Entrar</button>
 </div>
-
+<base-loading *ngIf="loading"></base-loading>

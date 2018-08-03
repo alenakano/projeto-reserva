@@ -3,4 +3,5 @@
         <h1 id="titulo" class="text-center">Horários reservados</h1>
     </div>
 </div>
-<lista-horarios></lista-horarios>
+<base-loading *ngIf="loading"></base-loading>
+<lista-horarios (loaded)="onLoaded()"></lista-horarios>

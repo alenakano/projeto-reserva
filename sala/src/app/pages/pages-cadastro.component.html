@@ -3,3 +3,10 @@
         <h1 id="titulo" class="text-center">Bem vindo! Cadastre aqui os horários</h1>
     </div>
 </div>
+<base-loading *ngIf="loading"></base-loading>
+<lista-horarios 
+    [admin]="true"
+    (editar)="onEditar()"
+    (excluir)="onExcluir()"
+    (loaded)="isLoaded()" 
+></lista-horarios>

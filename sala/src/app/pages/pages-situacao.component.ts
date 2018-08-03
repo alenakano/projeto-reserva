@@ -7,9 +7,12 @@ import { Component } from '@angular/core';
 })
 export class PagesSituacaoComponent {
 
+  public loading: boolean = true;
   
-  constructor(){
+  constructor(){}
 
+  public onLoaded(): void {
+    this.loading = false;
   }
 
 }

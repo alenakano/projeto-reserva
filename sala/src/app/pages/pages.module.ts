@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
 import { PagesCadastroComponent } from './pages-cadastro.component';
+import { PagesEditarComponent } from './pages-editar.component';
+import { PagesExcluirComponent } from './pages-excluir.component';
 import { PagesHomeComponent } from './pages-home.component';
 import { PagesLoginComponent } from './pages-login.component';
 import { PagesManipulacaoComponent } from './pages-manipulacao.component';
@@ -17,6 +19,8 @@ import { BaseModule } from "../base/base.module"
     ],
     declarations: [
         PagesCadastroComponent,
+        PagesEditarComponent,
+        PagesExcluirComponent,
         PagesHomeComponent,
         PagesLoginComponent,
         PagesManipulacaoComponent,

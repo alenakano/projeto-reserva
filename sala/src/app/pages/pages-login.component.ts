@@ -22,6 +22,7 @@ export class PagesLoginComponent {
 
   private erro: boolean;
   public mensagem: string;
+  public loading: boolean = false;
 
   public resposta: PagesResposta = new PagesResposta();
 
@@ -32,6 +33,7 @@ export class PagesLoginComponent {
     public onClick(): void {
       this.erro = false;
       this.mensagem = null;
+      this.loading = true;
       this.pagesLoginService.login(this.usuario).subscribe(
         res => {
           this.resposta = res;
@@ -58,7 +60,7 @@ export class PagesLoginComponent {
   }
 
   public onLoginSucesso(response: PagesResposta): void {
-    console.log(response)
+    this.loading = false;
     if (response.response === true) {
       this.validacao.emit();
     } else {
