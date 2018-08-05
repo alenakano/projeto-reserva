@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="col-md-6">
+    <div class="col-md-10">
         <div class="alert alert-warning">
             <strong>
                 Tem certeza que gostaria de excluir o dia {{horaExcluir.data | date: 'dd/MM/yyyy'}} 
@@ -7,7 +7,7 @@
             </strong>
         </div>
         </div>
-        <div class="col-md-4">
+        <div class="container col-md-4">
             <button class="btn btn-md btn-danger btn-space" (click)="onExcluirClick()">Excluir</button>
             <button class="btn btn-md btn-primary btn-space" (click)="onVoltarClick()">Voltar</button>            
         </div>

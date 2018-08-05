@@ -9,7 +9,7 @@ import { Horario } from '../base/horario';
 @Component({
     selector: 'pages-excluir',
     templateUrl: './pages-excluir.component.html',
-    styleUrls: [ './pages-excluir.component.css' ]
+    styleUrls: [ './pages-general.css' ]
 })
 
 export class PagesExcluirComponent {

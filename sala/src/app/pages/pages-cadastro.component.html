@@ -4,9 +4,11 @@
     </div>
 </div>
 <base-loading *ngIf="loading"></base-loading>
-<lista-horarios 
-    [admin]="true"
-    (editar)="onEditar($event)"
-    (excluir)="onExcluir($event)"
-    (loaded)="isLoaded()" 
-></lista-horarios>
+<div class="container">       
+    <lista-horarios 
+        [admin]="true"
+        (editar)="onEditar($event)"
+        (excluir)="onExcluir($event)"
+        (loaded)="isLoaded()" 
+    ></lista-horarios>
+</div>

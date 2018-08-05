@@ -33,7 +33,7 @@ export class PagesManipulacaoComponent {
         this.passo = 'excluir';
     }
 
-    public onVoltarExcluir(): void {
+    public onVoltar(): void {
         this.passo = 'reserva'
     }
 
