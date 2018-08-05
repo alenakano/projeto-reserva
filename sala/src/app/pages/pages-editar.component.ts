@@ -6,6 +6,8 @@ import {
 } from '@angular/core';
 
 import { Horario } from '../base/horario';
+import { PagesEditarService } from './pages-editar.service';
+import { PagesResposta } from './pages-resposta';
 
 @Component({
     selector: 'pages-editar',
@@ -18,17 +20,32 @@ export class PagesEditarComponent {
     @Input() horaEditar: Horario;
 
     @Output() voltar: EventEmitter<void> = new EventEmitter<void>();
+    @Output() validacao: EventEmitter<void> = new EventEmitter<void>();
 
     private loading: boolean = false;
-    
+
+    private erro: boolean;
     public horarioNovo: Horario = new Horario();
+    public mensagem: string;
+    public resposta: PagesResposta;
+
+    constructor(
+        private pagesEditarService: PagesEditarService
+    ){}
 
     ngOnInit() {
         this.horarioNovo = this.horaEditar;
     }
 
     public onClickEditar(): void {
-        console.log(this.horarioNovo.data)
+        this.loading = true;
+        this.pagesEditarService.editar(this.horarioNovo).subscribe(
+            res => {
+                this.resposta = res;
+                this.onEditarSucesso(this.resposta)
+                },
+              error => console.log('ERRO==> ' + error)
+            )
     }
 
     private onDataValue(data: string): void {
@@ -46,6 +63,18 @@ export class PagesEditarComponent {
             let ano = dataArray2[2];
             this.horarioNovo.data = new Date(parseInt(ano), parseInt(mes) - 1, parseInt(dia));
         }        
+    }
+
+    private onEditarSucesso(response: PagesResposta) {
+        this.loading = false;
+        if (response.response === true) {
+          this.validacao.emit();
+        } else {
+          if (response.msg != null) {
+            this.mensagem = response.msg; 
+            this.erro = true;
+            }
+        }
     }
 
     private onHoraValue(horario: number):void {

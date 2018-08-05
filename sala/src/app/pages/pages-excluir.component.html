@@ -1,6 +1,7 @@
 <div class="container">
     <div class="col-md-10">
         <div class="alert alert-warning">
+            <div class="container col-sm-4 alert alert-danger text-center" *ngIf="erro">{{mensagem}}</div>
             <strong>
                 Tem certeza que gostaria de excluir o dia {{horaExcluir.data | date: 'dd/MM/yyyy'}} 
                 às {{horaExcluir.hora}} horas?
@@ -12,3 +13,4 @@
             <button class="btn btn-md btn-primary btn-space" (click)="onVoltarClick()">Voltar</button>            
         </div>
 </div>
+<base-loading *ngIf="loading"></base-loading>

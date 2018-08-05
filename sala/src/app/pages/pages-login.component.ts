@@ -9,6 +9,8 @@ import { PagesLoginService } from './pages-login.service';
 import { PagesResposta } from './pages-resposta';
 import { PagesUser } from './pages-user';
 
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'pages-login',
   templateUrl: './pages-login.component.html',
@@ -26,15 +28,21 @@ export class PagesLoginComponent {
 
   public resposta: PagesResposta = new PagesResposta();
 
+  private serviceSubscription: Subscription;
+
   constructor(
     private pagesLoginService: PagesLoginService
   ) { }
+
+  ngOnDestroy(): void {
+    this.serviceSubscription.unsubscribe();
+  }
 
     public onClick(): void {
       this.erro = false;
       this.mensagem = null;
       this.loading = true;
-      this.pagesLoginService.login(this.usuario).subscribe(
+      this.serviceSubscription = this.pagesLoginService.login(this.usuario).subscribe(
         res => {
           this.resposta = res;
           this.onLoginSucesso(this.resposta)

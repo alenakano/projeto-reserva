@@ -1,6 +1,6 @@
 <div [ngSwitch]="passo">
     <pages-login *ngSwitchCase="'login'" (validacao)="onValidacao()"></pages-login>
     <pages-cadastro *ngSwitchCase="'reserva'" (editar)="onEditar($event)" (excluir)="onExcluir($event)"></pages-cadastro>
-    <pages-excluir [horaExcluir]="horario" *ngSwitchCase="'excluir'" (voltar)="onVoltar()"></pages-excluir>
-    <pages-editar [horaEditar]="horario" *ngSwitchCase="'editar'" (voltar)="onVoltar()"></pages-editar>
+    <pages-excluir [horaExcluir]="horario" *ngSwitchCase="'excluir'" (voltar)="onVoltar()" (validacao)="onValidacao()"></pages-excluir>
+    <pages-editar [horaEditar]="horario" *ngSwitchCase="'editar'" (voltar)="onVoltar()" (validacao)="onValidacao()"></pages-editar>
 </div>
