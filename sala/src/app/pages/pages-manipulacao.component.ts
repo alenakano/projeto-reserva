@@ -21,6 +21,10 @@ export class PagesManipulacaoComponent {
         private changeDetection: ChangeDetectorRef
     ){}
 
+    public onAdicionarClick():void {
+        this.passo = 'adicionar';
+    }
+
     public onEditar(horario): void {
         this.horario = horario;
         console.log(horario)

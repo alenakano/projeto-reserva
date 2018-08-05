@@ -17,6 +17,7 @@ export class PagesCadastroComponent {
 
     @Output() editar: EventEmitter<Horario> = new EventEmitter<Horario>();
     @Output() excluir: EventEmitter<Horario> = new EventEmitter<Horario>();
+    @Output() adicionar: EventEmitter<Horario> = new EventEmitter<Horario>();
 
     constructor(){}
 
@@ -24,6 +25,10 @@ export class PagesCadastroComponent {
         this.loading = false;
     }
 
+    onAdicionarClick(): void {
+        this.adicionar.emit();
+    }
+    
     public onEditar(horario: Horario): void {
         this.editar.emit(horario);
     }

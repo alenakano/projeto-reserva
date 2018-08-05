@@ -35,7 +35,9 @@ export class PagesLoginComponent {
   ) { }
 
   ngOnDestroy(): void {
-    this.serviceSubscription.unsubscribe();
+    if (this.serviceSubscription) {
+      this.serviceSubscription.unsubscribe();
+    }
   }
 
     public onClick(): void {

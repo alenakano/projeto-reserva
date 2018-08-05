@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
+import { PagesAdicionarComponent } from './pages-adicionar.component';
 import { PagesCadastroComponent } from './pages-cadastro.component';
 import { PagesEditarComponent } from './pages-editar.component';
 import { PagesExcluirComponent } from './pages-excluir.component';
@@ -18,6 +19,7 @@ import { BaseModule } from "../base/base.module"
         CommonModule
     ],
     declarations: [
+        PagesAdicionarComponent,
         PagesCadastroComponent,
         PagesEditarComponent,
         PagesExcluirComponent,
