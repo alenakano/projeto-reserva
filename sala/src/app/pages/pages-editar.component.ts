@@ -2,8 +2,12 @@ import {
     Component, 
     EventEmitter, 
     Input, 
-    Output, 
+    OnInit, 
+    OnDestroy,
+    Output,
 } from '@angular/core';
+
+import { Subscription } from 'rxjs';
 
 import { Horario } from '../base/horario';
 import { PagesEditarService } from './pages-editar.service';
@@ -15,7 +19,7 @@ import { PagesResposta } from './pages-resposta';
     styleUrls: [ './pages-general.css' ]
 })
 
-export class PagesEditarComponent {
+export class PagesEditarComponent implements OnInit, OnDestroy {
 
     @Input() horaEditar: Horario;
 
@@ -25,6 +29,7 @@ export class PagesEditarComponent {
     private loading: boolean = false;
 
     private erro: boolean;
+    private serviceSubscription: Subscription;
     public horarioNovo: Horario = new Horario();
     public mensagem: string;
     public resposta: PagesResposta;
@@ -37,14 +42,21 @@ export class PagesEditarComponent {
         this.horarioNovo = this.horaEditar;
     }
 
+    ngOnDestroy(): void {
+        if (this.serviceSubscription) {
+            this.serviceSubscription.unsubscribe();
+        }
+    }
+
     public onClickEditar(): void {
         this.loading = true;
-        this.pagesEditarService.editar(this.horarioNovo).subscribe(
-            res => {
-                this.resposta = res;
-                this.onEditarSucesso(this.resposta)
-                },
-              error => console.log('ERRO==> ' + error)
+        this.serviceSubscription = 
+            this.pagesEditarService.editar(this.horarioNovo).subscribe(
+                res => {
+                    this.resposta = res;
+                    this.onEditarSucesso(this.resposta)
+                    },
+                error => console.log('ERRO==> ' + error)
             )
     }
 

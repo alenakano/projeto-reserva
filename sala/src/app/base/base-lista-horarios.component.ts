@@ -2,13 +2,15 @@ import {
     Component,
     EventEmitter,
     Input,
+    OnDestroy
     OnInit, 
-    Output
+    Output,
 } from '@angular/core';
+
+import { Subscription } from 'rxjs';
 
 import { BaseListaHorariosService } from './base-lista-horarios.service';
 import { Horario } from './horario';
-import { error } from '@angular/compiler/src/util';
 
 @Component(
     {
@@ -18,10 +20,11 @@ import { error } from '@angular/compiler/src/util';
     }
 ) 
 
-export class BaseListaHorariosComponent implements OnInit {
+export class BaseListaHorariosComponent implements OnInit, OnDestroy {
     
     private horarios: Horario[];
     private confirma: boolean = false;
+    private serviceSubscription: Subscription;
     public value: Horario;
 
     @Input() admin: boolean = false;
@@ -32,18 +35,23 @@ export class BaseListaHorariosComponent implements OnInit {
 
     constructor(
         private service: BaseListaHorariosService
-    ) {}
+    ) {}    
 
     public ngOnInit(): void {
-        this.service.buscaHorarios()
-            .subscribe(
-                response => {
-                    this.horarios = response;
-                    this.loaded.emit();
-                },
-                error => null,
+        this.serviceSubscription = 
+            this.service.buscaHorarios()
+                .subscribe(
+                    response => {
+                        this.horarios = response;
+                        this.loaded.emit();
+                    },
+                    error => null,
             )
     };
+
+    public ngOnDestroy(): void {
+        this.serviceSubscription.unsubscribe();
+    }
 
     public onEditarClick(i): void {
         this.editar.emit(this.horarios[i]);

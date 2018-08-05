@@ -2,9 +2,12 @@ import {
     Component, 
     EventEmitter, 
     Input, 
-    Output, 
+    OnDestroy, 
+    Output,
 } from '@angular/core';
 import { Horario } from '../base/horario';
+
+import { Subscription } from 'rxjs';
 
 import { PagesAdicionarService } from './pages-adicionar.service';
 import { PagesResposta } from './pages-resposta';
@@ -15,7 +18,7 @@ import { PagesResposta } from './pages-resposta';
     styleUrls: [ './pages-general.css' ]
 })
 
-export class PagesAdicionarComponent {
+export class PagesAdicionarComponent implements OnDestroy{
 
     @Output() voltar: EventEmitter<void> = new EventEmitter<void>();
     @Output() validacao: EventEmitter<void> = new EventEmitter<void>();
@@ -25,22 +28,28 @@ export class PagesAdicionarComponent {
     private loading: boolean = false;
     public mensagem: string;
     public resposta: PagesResposta;
-    
+    private serviceSubscription: Subscription;
+        
     constructor(
         private pagesAdicionarService: PagesAdicionarService
     ){}
 
+    ngOnDestroy(): void {
+        if (this.serviceSubscription) {
+            this.serviceSubscription.unsubscribe();
+        }
+    }
 
     public onClickAdicionar(): void {
         this.loading = true;
-        console.log(this.horario);
-        this.pagesAdicionarService.adicionar(this.horario).subscribe(
-        res => {
-            this.resposta = res;
-            this.onAdicionarSucesso(this.resposta)
-            },
-            error => console.log('ERRO ==> ' + error)
-        )
+        this.serviceSubscription = 
+            this.pagesAdicionarService.adicionar(this.horario).subscribe(
+                res => {
+                    this.resposta = res;
+                    this.onAdicionarSucesso(this.resposta)
+                    },
+                    error => console.log('ERRO ==> ' + error)
+            )
     }
 
     public onAdicionarSucesso(response: PagesResposta): void {

@@ -2,10 +2,13 @@ import {
     Component, 
     EventEmitter, 
     Input, 
-    Output, 
+    OnDestroy, 
+    Output,
 } from '@angular/core';
-import { Horario } from '../base/horario';
 
+import { Subscription } from 'rxjs';
+
+import { Horario } from '../base/horario';
 import { PagesExcluirService } from './pages-excluir.service';
 import { PagesResposta } from './pages-resposta';
 
@@ -15,7 +18,7 @@ import { PagesResposta } from './pages-resposta';
     styleUrls: [ './pages-general.css' ]
 })
 
-export class PagesExcluirComponent {
+export class PagesExcluirComponent implements OnDestroy {
 
     @Input() horaExcluir: Horario = new Horario();
 
@@ -24,6 +27,7 @@ export class PagesExcluirComponent {
     
     private erro: boolean;
     private loading: boolean = false;
+    private serviceSubscription: Subscription;
     public mensagem: string;
     public resposta: PagesResposta;
     
@@ -31,16 +35,22 @@ export class PagesExcluirComponent {
         private pagesExcluirService: PagesExcluirService
     ){}
 
+    ngOnDestroy(): void {
+        if (this.serviceSubscription) {
+            this.serviceSubscription.unsubscribe();
+        }
+    }
 
     public onExcluirClick(): void {
         this.loading = true;
-        this.pagesExcluirService.excluir(this.horaExcluir).subscribe(
-        res => {
-            this.resposta = res;
-            this.onExcluirSucesso(this.resposta)
-            },
-            error => console.log('ERRO==> ' + error)
-        )
+        this.serviceSubscription =
+            this.pagesExcluirService.excluir(this.horaExcluir).subscribe(
+                res => {
+                    this.resposta = res;
+                    this.onExcluirSucesso(this.resposta)
+                    },
+                    error => console.log('ERRO==> ' + error)
+            )
     }
 
     onExcluirSucesso(response: PagesResposta): void {

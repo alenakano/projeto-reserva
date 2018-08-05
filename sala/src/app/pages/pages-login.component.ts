@@ -2,6 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   Output,
 } from '@angular/core';
 
@@ -16,7 +17,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './pages-login.component.html',
   styleUrls: ['./pages-general.css', 'pages-login.component.css']
 })
-export class PagesLoginComponent {
+export class PagesLoginComponent implements OnDestroy {
 
   @Output() validacao: EventEmitter<boolean> = new EventEmitter<boolean>();
 
