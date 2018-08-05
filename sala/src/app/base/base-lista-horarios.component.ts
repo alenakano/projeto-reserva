@@ -22,11 +22,12 @@ export class BaseListaHorariosComponent implements OnInit {
     
     private horarios: Horario[];
     private confirma: boolean = false;
+    public value: Horario;
 
     @Input() admin: boolean = false;
 
-    @Output() editar: EventEmitter<void> = new EventEmitter<void>();
-    @Output() excluir: EventEmitter<void> = new EventEmitter<void>();
+    @Output() editar: EventEmitter<Horario> = new EventEmitter<Horario>();
+    @Output() excluir: EventEmitter<Horario> = new EventEmitter<Horario>();
     @Output() loaded: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(
@@ -44,13 +45,13 @@ export class BaseListaHorariosComponent implements OnInit {
             )
     };
 
-    public onEditarClick(): void {
-        this.editar.emit();
+    public onEditarClick(i): void {
+        this.editar.emit(this.horarios[i]);
     }
 
-    public onExcluirClick(): void {
+    public onExcluirClick(i): void {
         this.confirma = true;
-        this.excluir.emit();
+        this.excluir.emit(this.horarios[i]);
     }
 
     public onNaoClick(): void {

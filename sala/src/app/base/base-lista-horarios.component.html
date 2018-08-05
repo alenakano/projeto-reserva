@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <ul class="list-group">
-        <div class="list-group-item" *ngFor="let hor of horarios">
+        <div class="list-group-item" *ngFor="let hor of horarios; let i = index">
             <span>{{hor.data | date: 'dd/MM/yyyy'}}</span>
             <span>&nbsp;&nbsp;&nbsp; <b>|</b> &nbsp;&nbsp;&nbsp;</span> 
             <span>{{hor.hora}} horas</span> 
-            <button *ngIf="admin" class="btn btn-md btn-danger btn-space pull-right" (click)="onExcluirClick()">Excluir</button>
-            <button *ngIf="admin" class="btn btn-md btn-primary btn-space pull-right" (click)="onEditarClick()">Editar</button>            
+            <button *ngIf="admin" class="btn btn-md btn-danger btn-space pull-right" (click)="onExcluirClick(i)">Excluir</button>
+            <button *ngIf="admin" class="btn btn-md btn-primary btn-space pull-right" (click)="onEditarClick(i)">Editar</button>            
         </div>
         <li *ngIf="!admin" class="list-group-item bg-light"> Atenção: A sala pode ser reservada apenas em período cheio de uma hora.</li>
     </ul>

@@ -1,9 +1,11 @@
 import { 
     Component,
-    Input
+    ChangeDetectorRef,
+    HostListener,
+    Input,
 } from '@angular/core';
 
-
+import { Horario } from '../base/horario';
 
 @Component({
     selector: 'pages-manipulacao',
@@ -13,12 +15,21 @@ import {
 export class PagesManipulacaoComponent {
 
     @Input() passo: string = 'login';
+    public horario: Horario = new Horario();
 
-    public onEditar(): void {
+    constructor(
+        private changeDetection: ChangeDetectorRef
+    ){}
+
+    public onEditar(horario): void {
+        this.horario = horario;
+        console.log(horario)
         this.passo = 'editar';
     }
 
-    public onExcluir(): void {
+    public onExcluir(horario: Horario): void {      
+        console.log(horario)
+        this.horario = horario;
         this.passo = 'excluir';
     }
 

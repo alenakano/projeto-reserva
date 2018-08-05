@@ -4,6 +4,8 @@ import {
     Output, 
 } from '@angular/core';
 
+import { Horario } from '../base/horario';
+
 @Component({
     selector: 'pages-cadastro',
     templateUrl: './pages-cadastro.component.html'
@@ -13,8 +15,8 @@ export class PagesCadastroComponent {
 
     public loading: boolean = true;
 
-    @Output() editar: EventEmitter<void> = new EventEmitter<void>();
-    @Output() excluir: EventEmitter<void> = new EventEmitter<void>();
+    @Output() editar: EventEmitter<Horario> = new EventEmitter<Horario>();
+    @Output() excluir: EventEmitter<Horario> = new EventEmitter<Horario>();
 
     constructor(){}
 
@@ -22,11 +24,11 @@ export class PagesCadastroComponent {
         this.loading = false;
     }
 
-    public onEditar(): void {
-        this.editar.emit();
+    public onEditar(horario: Horario): void {
+        this.editar.emit(horario);
     }
 
-    public onExcluir(): void {
-        this.excluir.emit();
+    public onExcluir(horario: Horario): void {
+        this.excluir.emit(horario);
     }
 }

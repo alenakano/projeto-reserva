@@ -1,6 +1,10 @@
 import { 
-    Component, Output, EventEmitter 
+    Component, 
+    EventEmitter, 
+    Input, 
+    Output, 
 } from '@angular/core';
+import { Horario } from '../base/horario';
 
 @Component({
     selector: 'pages-excluir',
@@ -10,10 +14,12 @@ import {
 
 export class PagesExcluirComponent {
 
+    @Input() horaExcluir: Horario = new Horario();
+
     @Output() voltar: EventEmitter<void> = new EventEmitter<void>();
 
     public onExcluirClick(): void {
-
+        
     }
 
     public onVoltarClick(): void {

@@ -15,6 +15,8 @@ export class BaseInputComponent{
     
     @Input() inputType: string = "text";
 
+    @Input() value: string = null;
+
     @Output() listenInput: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(){

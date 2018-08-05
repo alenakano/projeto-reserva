@@ -6,7 +6,7 @@
 <base-loading *ngIf="loading"></base-loading>
 <lista-horarios 
     [admin]="true"
-    (editar)="onEditar()"
-    (excluir)="onExcluir()"
+    (editar)="onEditar($event)"
+    (excluir)="onExcluir($event)"
     (loaded)="isLoaded()" 
 ></lista-horarios>
