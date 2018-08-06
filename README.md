@@ -2,7 +2,7 @@ Projeto.
 
 
 MONGODB
-Para inicializar o projeto, deve-se ter o banco de dados Mongo instalado em sua máquina e, se possível, com variável de ambiente configurada para a utilização de forma mais simples do BD. Para subir o banco de dados, digitar o comando (caso as variáveis de ambiente estejam configuradas) mongod --dbpath <diretorio-db-do-presente-projeto> .
+Para inicializar o projeto, deve-se ter o banco de dados Mongo instalado em sua máquina e, se possível, com variável de ambiente configurada para a utilização de forma mais simples do BD. Para subir o banco de dados, digitar o comando (caso as variáveis de ambiente estejam configuradas) mongod --dbpath "diretorio-db-do-presente-projeto" .
   
 NODEJS
 Para inicializar o node, acessar a pasta pelo terminal e executar npm install para a instalação dos módulos. Após esse processo, inicializar o server com o comando npm start index.js
